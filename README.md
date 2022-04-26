@@ -2,7 +2,7 @@
 
  A cheat sheet for bash commands.
 
-### Navigating Directories
+### Navigating directories
 
 ```bash
 pwd                       # Print current directory path
@@ -24,7 +24,7 @@ pushd foo                 # Go to foo sub-directory and add previous directory t
 popd                      # Go back to directory in stack saved by `pushd`
 ```
 
-### Creating Directories
+### Creating directories
 
 ```bash
 mkdir foo                        # Create a directory
@@ -35,7 +35,7 @@ mkdir -p|--parents {foo,bar}/baz # Create multiple nested directories
 mktemp -d|--directory            # Create a temporary directory
 ```
 
-### Moving Directories
+### Moving directories
 
 ```bash
 cp -R|--recursive foo bar                               # Copy directory
@@ -47,7 +47,7 @@ rsync -avz /foo username@hostname:/bar                  # Copy local directory t
 rsync -avz username@hostname:/foo /bar                  # Copy remote directory to local directory
 ```
 
-### Deleting Directories
+### Deleting directories
 
 ```bash
 rmdir foo                        # Delete non-empty directory
@@ -55,7 +55,7 @@ rm -r|--recursive foo            # Delete directory including contents
 rm -r|--recursive -f|--force foo # Delete directory including contents, ignore nonexistent files and never prompt
 ```
 
-### Creating Files
+### Creating files
 
 ```bash
 touch foo.txt          # Create file or update existing files modified timestamp
@@ -67,7 +67,7 @@ touch test{a..c}       # Create testa, testb and testc files
 mktemp                 # Create a temporary file
 ```
 
-### Standard Output, Standard Error and Standard Input
+### Standard output, standard error and standard input
 
 ```bash
 echo "foo" > bar.txt       # Overwrite file with content
@@ -81,7 +81,7 @@ ls > /dev/null             # Discard standard output and error
 read foo                   # Read from standard input and write to the variable foo
 ```
 
-### Moving Files
+### Moving files
 
 ```bash
 cp foo.txt bar.txt                                # Copy file
@@ -91,14 +91,14 @@ rsync -z|--compress -v|--verbose /foo.txt /bar    # Copy file quickly if not cha
 rsync z|--compress -v|--verbose /foo.txt /bar.txt # Copy and rename file quickly if not changed
 ```
 
-### Deleting Files
+### Deleting files
 
 ```bash
 rm foo.txt            # Delete file
 rm -f|--force foo.txt # Delete file, ignore nonexistent files and never prompt
 ```
 
-### Reading Files
+### Reading files
 
 ```bash
 cat foo.txt            # Print all contents
@@ -109,7 +109,7 @@ open foo.txt           # Open file in the default editor
 wc foo.txt             # List number of lines words and characters in the file
 ```
 
-### File Permissions
+### File permissions
 
 | # | Permission              | rwx | Binary |
 | - | -                       | -   | -      |
@@ -146,7 +146,7 @@ chmod a+x foo.sh         # Give everybody execute permission
 chmod +x foo.sh          # Give everybody execute permission
 ```
 
-### Finding Files
+### Finding files
 
 Find binary files for a command.
 
@@ -181,7 +181,7 @@ find /path -type f -mtime +30              # Find files that haven't been modifi
 find /path -type f -mtime +30 -delete      # Delete files that haven't been modified in 30 days
 ```
 
-### Find in Files
+### Find in files
 
 ```bash
 grep 'foo' /bar.txt                         # Search for 'foo' in file 'bar.txt'
@@ -201,7 +201,7 @@ grep --extended-regexp|-E 'foo|bar' /baz -R # Use regular expressions
 egrep 'foo|bar' /baz -R                     # Use regular expressions
 ```
 
-#### Replace in Files
+#### Replace in files
 
 ```bash
 sed 's/fox/bear/g' foo.txt               # Replace fox with bear in foo.txt and output to console
@@ -211,7 +211,7 @@ sed 's/fox/bear/g' foo.txt > bar.txt     # Replace fox with bear in foo.txt and 
 sed 's/fox/bear/g' foo.txt -i|--in-place # Replace fox with bear and overwrite foo.txt
 ```
 
-### Symbolic Links
+### Symbolic links
 
 ```bash
 ln -s|--symbolic foo bar            # Create a link 'bar' to the 'foo' folder
@@ -219,7 +219,7 @@ ln -s|--symbolic -f|--force foo bar # Overwrite an existing symbolic link 'bar'
 ls -l                               # Show where symbolic links are pointing
 ```
 
-### Compressing Files
+### Compressing files
 
 #### zip
 
@@ -251,7 +251,7 @@ tar -c|--create -z|--gzip -f|--file=foo.tgz /{bar,baz}.txt    # Compress bar.txt
 tar -c|--create -z|--gzip -f|--file=foo.tgz /bar              # Compress directory bar into foo.tgz
 ```
 
-### Decompressing Files
+### Decompressing files
 
 #### unzip
 
@@ -273,7 +273,7 @@ tar -x|--extract -z|--gzip -f|--file=foo.tar.gz # Un-compress foo.tar.gz into cu
 tar -x|--extract -f|--file=foo.tar              # Un-combine foo.tar into current directory
 ```
 
-### Disk Usage
+### Disk usage
 
 ```bash
 df                     # List disks, size, used and available space
@@ -286,7 +286,7 @@ du -d|--max-depth      # List current directory, subdirectories and file sizes w
 du -d 0                # List current directory size
 ```
 
-### Memory Usage
+### Memory usage
 
 ```bash
 free                   # Show memory usage
@@ -306,7 +306,7 @@ apt remove wget        # Removes the wget package
 apt upgrade            # Upgrades all upgradable packages
 ```
 
-### Shutdown and Reboot
+### Shutdown and reboot
 
 ```bash
 shutdown                     # Shutdown in 1 minute
@@ -323,7 +323,7 @@ reboot                       # Reboot now
 reboot -f                    # Force a reboot
 ```
 
-### Identifying Processes
+### Identifying processes
 
 ```bash
 top                    # List all processes interactively
@@ -344,7 +344,7 @@ lsof                   # List all open files and the process using them
 lsof -itcp:4000        # Return the process listening on port 4000
 ```
 
-### Process Priority
+### Process priority
 
 Process priorities go from -20 (highest) to 19 (lowest).
 
@@ -354,7 +354,7 @@ renice 20 PID          # Change process priority by PID
 ps -o ni PID           # Return the process priority of PID
 ```
 
-### Killing Processes
+### Killing processes
 
 ```bash
 CTRL+C                 # Kill a process running in the foreground
@@ -365,7 +365,7 @@ pkill -9 foo           # force shut down process by name. Sends SIGKILL signal.
 killall foo            # Kill all process with the specified name gracefully.
 ```
 
-### Date & Time
+### Date and time
 
 ```bash
 date                   # Print the date and time
@@ -375,7 +375,7 @@ date --iso-8601=ns     # Print the ISO8601 date and time
 time tree              # Time how long the tree command takes to execute
 ```
 
-### Scheduled Tasks
+### Scheduled tasks
 
 ```pre
    *      *         *         *           *
@@ -404,7 +404,7 @@ at 12:34 PM next month     # Create a task in Vim to execute at 12:34 PM next mo
 at tomorrow                # Create a task in Vim to execute tomorrow
 ```
 
-### HTTP Requests
+### HTTP requests
 
 ```bash
 curl https://example.com                               # Return response body
@@ -419,7 +419,7 @@ wget https://example.com/file.txt .                            # Download a file
 wget -O|--output-document foo.txt https://example.com/file.txt # Output to a file with the specified name
 ```
 
-### Network Troubleshooting
+### Network troubleshooting
 
 ```bash
 ping example.com            # Send multiple ping requests using the ICMP protocol
@@ -460,7 +460,7 @@ lspci                  # List PCI hardware
 lshw                   # List all hardware
 ```
 
-### Terminal Multiplexers
+### Terminal multiplexers
 
 Start multiple terminal sessions. Active sessions persist reboots. `tmux` is more modern than `screen`.
 
@@ -497,13 +497,13 @@ Host name
 $ ssh name
 ```
 
-### Secure Copy
+### Secure copy
 
 ```bash
 scp foo.txt ubuntu@hostname:/home/ubuntu # Copy foo.txt into the specified remote directory
 ```
 
-### Bash Profile
+### Bash profile
 
 - bash - `.bashrc`
 - zsh - `.zshrc`
@@ -524,7 +524,7 @@ alias df='df -h'
 alias du='du -h'
 ```
 
-### Bash Script
+### Bash script
 
 #### Variables
 
@@ -542,7 +542,7 @@ export foo             # Make foo available to child processes
 unset foo              # Make foo unavailable to child processes
 ```
 
-#### Environment Variables
+#### Environment variables
 
 ```bash
 #!/bin/bash
@@ -565,7 +565,7 @@ greet "Hello"
 greeting=$(greet "Hello")
 ```
 
-#### Exit Codes
+#### Exit codes
 
 ```bash
 #!/bin/bash
@@ -575,14 +575,14 @@ exit 1   # Exit the script unsuccessfully
 echo $?  # Print the last exit code
 ```
 
-#### Conditional Statements
+#### Conditional statements
 
-###### Boolean Operators
+###### Boolean operators
 
 - `$foo` - Is true
 - `!$foo` - Is false
 
-###### Numeric Operators
+###### Numeric operators
 
 - `-eq` - Equals
 - `-ne` - Not equals
@@ -593,7 +593,7 @@ echo $?  # Print the last exit code
 - `-e` foo.txt - Check file exists
 - `-z` foo - Check if variable exists
 
-###### String Operators
+###### String operators
 
 - `=` - Equals
 - `==` - Equals
@@ -602,7 +602,7 @@ echo $?  # Print the last exit code
 - `<` - Is less than in ASCII alphabetical order
 - `>` - Is greater than in ASCII alphabetical order
 
-###### If Statements
+###### If statements
 
 ```bash
 #!/bin/bash
@@ -618,7 +618,7 @@ else
 fi
 ```
 
-###### Inline If Statements
+###### Inline if statements
 
 ```bash
 #!/bin/bash
@@ -626,7 +626,7 @@ fi
 [[ $USER = 'rehan' ]] && echo 'yes' || echo 'no'
 ```
 
-###### While Loops
+###### While loops
 
 ```bash
 #!/bin/bash
@@ -639,7 +639,7 @@ while [$counter -gt 2]; do
 done
 ```
 
-###### For Loops
+###### For loops
 
 ```bash
 #!/bin/bash
@@ -660,7 +660,7 @@ for filename in *;
   done
 ```
 
-###### Case Statements
+###### Case statements
 
 ```bash
 #!/bin/bash
